@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3000;
 const server = express();
 server.use(cors());
 
+// server.use(express.json);
 server.use(express.static('./public'));
 server.use(express.urlencoded({ extended: true }));
 server.set('view engine', 'ejs');
@@ -15,42 +16,35 @@ server.set('view engine', 'ejs');
 server.get('/', (request, response) => {
     response.render('pages/index')
 });
-console.log('ffffff');
+// console.log('ffffff');
 
 // research route
-server.get('/research', booksInfo);
-
-// bookHandler  function
-// function bookHandler (request,response){
-//     // console.log('dddddddd',request.data)
-//     booksInfo(request.data)
-
-// .then(book=> response.status(200).json(book))}
+server.get('/research', booksHandler);
+// server.post('/research', booksHandler);
 
 
-// API
-function booksInfo(data) {
-    let url = 'https://www.googleapis.com/books/v1/volumes?q=dan';
-    console.log('urllllllllllllllllllllllllllllll', url)
-     superagent.get(url)
-    console.log('sssssssssssssssssssssssurllllllllllllllllllllllllllllll', superagent.get(url))
-        .then(books=> {
-            // console.log('gggggggggggggggg', books);
 
-            return new Books(books.volumeInfo)
-
-        })
-        // .then(book => response.status(200).json(book))
+function booksHandler(request, response) {
+    getBooks(request.query.data)
+        .then(booksData => response.status(200).json(booksData))
+      .then(response.redirect('/result.ejs'));  
 };
-
-
-//constructure function
-function Books(title) {
-    this.image = books.volumeInfo.imageLinks.thumbnail;
-    this.title = books.volumeInfo.title;
-    this.author_name = books.volumeInfo.authors;
-    this.description = books.volumeInfo.description;
-
+function getBooks(data) {
+    let url = 'https://www.googleapis.com/books/v1/volumes?q=dan';
+    return superagent.get(url)
+        .then(data => {
+            // res.json(data.body)
+            // console.log(data);
+            let books = data.body;
+            return books.items.map(book => {
+                return new Book(book);
+            })
+        })}
+function Book(data) {
+    this.id= data.id;
+    this.image_url = data.volumeInfo.imageLinks.thumbnail;
+    this.title = data.volumeInfo.title;
+    this.author = data.volumeInfo.authors;
+    this.description = data.volumeInfo.description
 }
-
 server.listen(PORT, () => console.log(`listening to ${PORT}`));
