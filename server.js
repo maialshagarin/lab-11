@@ -30,7 +30,7 @@ function booksHandler(request, response) {
       .then(response.redirect('/result.ejs'));  
 };
 function getBooks(data) {
-    let url = 'https://www.googleapis.com/books/v1/volumes?q=dan';
+    let url = 'https://www.googleapis.com/books/v1/volumes?q=books';
     return superagent.get(url)
         .then(data => {
             // res.json(data.body)
