@@ -3,7 +3,12 @@
 
 <head>
     <title>Books</title>
+    <link rel="stylesheet" href="/styles/reset.css">
     <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/icons.css">
+    <link rel="stylesheet" href="/styles/layout.css">
+    <link rel="stylesheet" href="/styles/modules.css">
+
 
 </head>
 
@@ -14,19 +19,19 @@
         </h1>
     </header>
     <main>
-        <form action="/research">
+        <form action="/searches" method="post">
              <label>
                 <span> Enter a title or author</span>
-                <input search by title="search by title" />
+                <input name ="search " />
             </label>
             <label>
                 <span> search by Title</span>
-                <input type="radio" name="title" id="title">
+                <input type="radio" name="choose" value="title">
 
             </label>
             <label>
                 <span> search by author</span>
-                <input type="radio" name="author" id="author">
+                <input type="radio" name="choose" value="author">
 
             </label>
 
