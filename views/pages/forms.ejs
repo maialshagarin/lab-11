@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Add to Database</h1>
+    </header>
+    <div>
+    <form action="/addBook" method="post">
+        <div>
+            <label>Title</label>
+            <input type="text" name="title" value=<%=data.title %>>
+        </div>
+        <div>
+            <label>Authors</label>
+            <input type="text" name="authors" value=<%=data.authors %>>
+        </div>
+        <div>
+            <label>Description</label>
+            <input type="text" name="descriptions" value=<%=data.descriptions %>>
+        </div>
+           
+        <div>
+            <label>URL</label>
+            <input type="text" name="image" value=<%=data.image %>>
+        </div>
+        <div>
+            <label>Book Shelf type:</label>
+            <input type="text" name="bookshelf" value=" ">
+        </div>
+        <button>ADD</button>
+        
+    </form>
+</body>
+</html>
