@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>result</title>
+</head>
+
+<body>
+    <h1> your books </h1>
+
+    <div>
+        <% x.forEach(function(data) { %>
+        <p>The titles</p>
+        <li><%= (data.volumeInfo.title)? data.volumeInfo.title:"" %></li>
+        <p>The authors</p>
+        <li><%= (data.volumeInfo.authors)? data.volumeInfo.authors[0]:""%></li>
+        <p>The descriptions</p>
+        <li><%= data.volumeInfo.description %></li>
+        <p>The imageLinks</p>
+        <li> <img src="<%= (data.volumeInfo.imageLinks)? data.volumeInfo.imageLinks.thumbnail : " " %>" alt="image">
+        </li>
+        <p>The typeIsbn</p>
+
+        <li>
+            <form action="/selector" method="POST">
+                <button> select </button>
+                <input type="hidden" name="title" value=<%=data.volumeInfo.title %>>
+                <input type="hidden" name="authors" value=<%=data.volumeInfo.authors %>>
+                <input type="hidden" name="descriptions" value=<%=data.volumeInfo.description %>>
+                <input type="hidden" name="image" value=<%=data.volumeInfo.imageLinks.thumbnail %>>
+
+            </form>
+        </li>
+        <% }); %>
+    </div>
+</body>
+
+</html>
