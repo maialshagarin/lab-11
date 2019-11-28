@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-   <title>Books</title>
-   <link rel="stylesheet" href="/styles/base.css">
-  
+    <title>Books</title>
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/icons.css">
+    <link rel="stylesheet" href="/styles/layout.css">
+    <link rel="stylesheet" href="/styles/modules.css">
+
+
 </head>
+
 <body>
     <header>
         <h1>
@@ -12,17 +19,25 @@
         </h1>
     </header>
     <main>
-    <form >
-        <label>
-            <span> search by title</span>
-            <input search by title= "search by title"/>
-        </label>
-        <label >
+        <form action="/searches" method="post">
+             <label>
+                <span> Enter a title or author</span>
+                <input name ="search " />
+            </label>
+            <label>
+                <span> search by Title</span>
+                <input type="radio" name="choose" value="title">
+
+            </label>
+            <label>
                 <span> search by author</span>
-                <input search by author= "search by author"/>
-        </label>
-        <button>search</button>
-    </form>
-</main>
+                <input type="radio" name="choose" value="author">
+
+            </label>
+
+            <button>Search the Goolge Books API</button>
+        </form>
+    </main>
 </body>
+
 </html>

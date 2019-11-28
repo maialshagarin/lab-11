@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <title>result</title>
+</head>
+<body>
+    <h1> your books </h1>
+
+    <div>
+        <% x.forEach(function(data) { %>
+        <p>The titles</p>
+        <li><%= (data.volumeInfo.title)? data.volumeInfo.title:"" %></li>
+        <p>The authors</p>
+        <li><%= (data.volumeInfo.authors)? data.volumeInfo.authors[0]:""%></li>
+        <p>The descriptions</p>
+        <li><%= data.volumeInfo.description %></li>
+        <p>The imageLinks</p>
+        <li> <img src="<%= (data.volumeInfo.imageLinks)? data.volumeInfo.imageLinks.thumbnail:"" %>" alt="image"></li>
+        <% }); %>
+
+     </div>
+</body>
+</html>
